@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+class SimulationSession extends Model
+{
+    protected $fillable = [
+        'uuid',
+        'current_step_id',
+        'journey_log',
+        'total_score',
+        'max_possible_score',
+        'score_percentage'
+    ];
+
+    protected $casts = [
+        'journey_log' => 'array',
+    ];
+
+    protected $appends = ['is_finished'];
+
+    public function getIsFinishedAttribute()
+    {
+        return $this->completed_at !== null;
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($session) {
+            $session->uuid = (string) Str::uuid();
+        });
+    }
+
+    public function currentStep()
+    {
+        return $this->belongsTo(Step::class, 'current_step_id');
+    }
+}
