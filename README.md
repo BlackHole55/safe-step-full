@@ -7,8 +7,8 @@ A full-stack interactive training Single Page Application (SPA) for emergency re
 - **Database**: PostgreSQL
 
 ## Quick Start (Docker)
-1. **Clone the project** and ensure the sub-folders are named `safe-step-backend` and `safe-step-frontend`.
-2. ### For Windows Users
+**Clone the project** and ensure the sub-folders are named `safe-step-backend` and `safe-step-frontend`.
+### For Windows Users
 Double-click `setup.bat` or run:
 ```batch
 .\setup.bat
