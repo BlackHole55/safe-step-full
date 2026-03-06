@@ -1,10 +1,10 @@
 services:
   # PHP Engine
   backend:
-    build: ./safe-step
+    build: ./safe-step-backend
     container_name: simulation_backend
     volumes:
-      - ./safe-step:/var/www
+      - ./safe-step-backend:/var/www
     environment:
       - DB_CONNECTION=pgsql
       - DB_HOST=db
@@ -21,7 +21,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./safe-step:/var/www
+      - ./safe-step-backend:/var/www
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - backend
